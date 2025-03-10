@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            margin-top: 1.5em;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .metrics, .insights, .recommendations {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .metrics-box, .insight-box, .recommendation-box {
+            flex: 1 1 30%;
+            background: #e6f7ff;
+            margin: 10px;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        .text-box {
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .chart {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <h1>Sales Performance Report</h1>
+        <h2>Period: January 2023 - December 2023</h2>
+    </div>
+    <div class="section">
+        <h2>Executive Summary</h2>
+        <p>This report provides a detailed analysis of sales performance across various product categories for the year 2023. It highlights key trends, revenue distribution, seasonal variations, and product-specific insights. The analysis aims to offer a strategic roadmap for optimizing sales in the coming year.</p>
+    </div>
+    <div class="section metrics">
+        <h2>Key Sales Metrics</h2>
+        <div class="metrics-box">
+            <h3>Total Revenue</h3>
+            <p class="text-box">$12,450,000</p>
+        </div>
+        <div class="metrics-box">
+            <h3>Total Units Sold</h3>
+            <p class="text-box">625,000</p>
+        </div>
+        <div class="metrics-box">
+            <h3>Average Revenue Per Sale</h3>
+            <p class="text-box">$19.92</p>
+        </div>
+        <div class="metrics-box">
+            <h3>Best Performing Month</h3>
+            <p class="text-box">November ($1,450,000 revenue)</p>
+        </div>
+        <div class="metrics-box">
+            <h3>Worst Performing Month</h3>
+            <p class="text-box">February ($850,000 revenue)</p>
+        </div>
+        <div class="metrics-box">
+            <h3>Top Selling Product</h3>
+            <p class="text-box">Wireless Headphones (85,000 units)</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Monthly Sales Trends</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Revenue ($)</th>
+                    <th>Units Sold</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>January</td><td>1,100,000</td><td>55,000</td></tr>
+                <tr><td>February</td><td>850,000</td><td>42,500</td></tr>
+                <tr><td>March</td><td>970,000</td><td>48,500</td></tr>
+                <tr><td>April</td><td>1,020,000</td><td>51,000</td></tr>
+                <tr><td>May</td><td>1,180,000</td><td>59,000</td></tr>
+                <tr><td>June</td><td>1,250,000</td><td>62,500</td></tr>
+                <tr><td>July</td><td>1,320,000</td><td>66,000</td></tr>
+                <tr><td>August</td><td>1,400,000</td><td>70,000</td></tr>
+                <tr><td>September</td><td>1,300,000</td><td>65,000</td></tr>
+                <tr><td>October</td><td>1,380,000</td><td>69,000</td></tr>
+                <tr><td>November</td><td>1,450,000</td><td>72,500</td></tr>
+                <tr><td>December</td><td>1,230,000</td><td>61,500</td></tr>
+            </tbody>
+        </table>
+        <div class="chart-container">
+            <canvas id="monthlyTrendsChart" class="chart"></canvas>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Top Selling Products</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Units Sold</th>
+                    <th>Revenue ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Wireless Headphones</td><td>85,000</td><td>1,700,000</td></tr>
+                <tr><td>Smartwatches</td><td>75,000</td><td>1,875,000</td></tr>
+                <tr><td>Bluetooth Speakers</td><td>60,000</td><td>1,200,000</td></tr>
+                <tr><td>Laptops</td><td>30,000</td><td>2,700,000</td></tr>
+                <tr><td>Gaming Consoles</td><td>40,000</td><td>2,400,000</td></tr>
+                <tr><td>Tablets</td><td>25,000</td><td>1,500,000</td></tr>
+                <tr><td>Home Assistants</td><td>35,000</td><td>875,000</td></tr>
+            </tbody>
+        </table>
+        <div class="chart-container">
+            <canvas id="topProductsChart" class="chart"></canvas>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Category-wise Sales Distribution</h2>
+        <div class="insights-box">
+            <h3>Electronics & Gadgets</h3>
+            <p>Laptops, tablets, and gaming consoles collectively generated <strong>$6.6 million</strong>, accounting for <strong>53% of total revenue</strong>.</p>
+            <p>Laptops had the highest revenue contribution with a <strong>21.7% share</strong>.</p>
+        </div>
+        <div class="insights-box">
+            <h3>Wearables & Audio</h3>
+            <p>Wireless headphones, Bluetooth speakers, and smartwatches collectively generated <strong>$4.8 million</strong>, contributing to <strong>38.5% of total revenue</strong>.</p>
+            <p>Smartwatches showed a <strong>steady rise in demand</strong>, peaking in the holiday season.</p>
+        </div>
+        <div class="insights-box">
+            <h3>Smart Home Devices</h3>
+            <p>Home assistants and IoT devices accounted for <strong>$1.05 million</strong>, representing a <strong>8.4% share</strong>.</p>
+            <p>Increased adoption of voice-controlled devices led to a <strong>15% increase</strong> compared to 2022.</p>
+        </div>
+        <div class="chart-container">
+            <canvas id="categoryDistributionChart" class="chart"></canvas>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Quarterly Performance Breakdown</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Quarter</th>
+                    <th>Revenue ($)</th>
+                    <th>Growth (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Q1 (Jan-Mar)</td><td>2,920,000</td><td>-</td></tr>
+                <tr><td>Q2 (Apr-Jun)</td><td>3,450,000</td><td>+18.1%</td></tr>
+                <tr><td>Q3 (Jul-Sep)</td><td>4,020,000</td><td>+16.5%</td></tr>
+                <tr><td>Q4 (Oct-Dec)</td><td>4,060,000</td><td>+1.0%</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Strongest Growth:</strong> Q2 saw the largest quarter-over-quarter growth (<strong>18.1%</strong>) due to early summer promotions.</p>
+        <p><strong>Stabilization in Q4:</strong> Despite high sales in November, the overall Q4 growth rate was only <strong>1%</strong>, indicating saturation in the market.</p>
+    </div>
+
+    <div class="section insights">
+        <h2>Seasonal Sales Insights</h2>
+        <div class="insight-box">
+            <h3>Peak Demand Periods</h3>
+            <p><strong>Black Friday (November):</strong> Highest single-month sales, <strong>$1.45M revenue</strong>.</p>
+            <p><strong>Back-to-School (August-September):</strong> Steady rise in sales, particularly for laptops and tablets.</p>
+            <p><strong>Holiday Season (December):</strong> A minor dip compared to November but still strong at <strong>$1.23M revenue</strong>.</p>
+        </div>
+        <div class="insight-box">
+            <h3>Low Sales Periods</h3>
+            <p><strong>Post-Holiday Drop (January-February):</strong> Sales fell <strong>21% from December to February</strong>, reflecting seasonal demand shifts.</p>
+            <p><strong>Mid-Year Plateau (June):</strong> A temporary stagnation in sales before the back-to-school season.</p>
+        </div>
+        <div class="insight-box">
+            <h3>Category Trends</h3>
+            <p><strong>Smartwatches & Headphones:</strong> Gradual growth throughout the year, peaking in Q4.</p>
+            <p><strong>Gaming Consoles:</strong> Highest sales in <strong>November & December</strong>.</p>
+            <p><strong>Laptops & Tablets:</strong> Strong demand in <strong>August-September</strong>, driven by education-related purchases.</p>
+        </div>
+    </div>
+
+    <div class="section recommendations">
+        <h2>Future Recommendations</h2>
+        <div class="recommendation-box">
+            <h3>Stock Optimization & Inventory Planning</h3>
+            <p>Maintain <strong>higher stock levels in Q4</strong>, ensuring sufficient supply for peak demand periods.</p>
+            <p>Implement <strong>dynamic stock allocation</strong> to prevent overstocking in low-sales months.</p>
+        </div>
+        <div class="recommendation-box">
+            <h3>Targeted Promotions & Discounts</h3>
+            <p>Introduce <strong>early Q1 promotions</strong> to counter post-holiday slowdowns.</p>
+            <p>Leverage <strong>back-to-school campaigns</strong> to boost sales of laptops and tablets in Q3.</p>
+            <p>Optimize <strong>Black Friday strategies</strong> by expanding bundle offers.</p>
+        </div>
+        <div class="recommendation-box">
+            <h3>Product Expansion Strategies</h3>
+            <p>Introduce <strong>premium versions</strong> of top-selling items to increase revenue per unit.</p>
+            <p>Expand <strong>accessories range</strong> for smartwatches and headphones to complement existing bestsellers.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Conclusion</h2>
+        <p>This detailed sales performance analysis provides a comprehensive understanding of market trends and consumer behavior. The outlined recommendations focus on maximizing revenue potential, improving inventory planning, and optimizing promotional efforts for sustained growth in the upcoming year.</p>
+    </div>
+
+    <script>
+        // Monthly Sales Trends
+        const ctxMonthly = document.getElementById('monthlyTrendsChart').getContext('2d');
+        const monthlyTrendsChart = new Chart(ctxMonthly, {
+            type: 'line',
+            plugins: [ChartDataLabels],
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                datasets: [{
+                    label: 'Revenue ($)',
+                    data: [1100000, 850000, 970000, 1020000, 1180000, 1250000, 1320000, 1400000, 1300000, 1380000, 1450000, 1230000],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false,
+                    datalabels: {
+                        align: 'top',
+                        anchor: 'end',
+                        color: '#444',
+                        formatter: function(value) { return '$' + value.toLocaleString(); }
+                    }
+                }, {
+                    label: 'Units Sold',
+                    data: [55000, 42500, 48500, 51000, 59000, 62500, 66000, 70000, 65000, 69000, 72500, 61500],
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    fill: false,
+                    datalabels: {
+                        align: 'top',
+                        anchor: 'end',
+                        color: '#444',
+                        formatter: function(value) { return value.toLocaleString() + ' units'; }
+                    }
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                    }
+                },
+            },
+        });
+
+        // Top Selling Products Chart
+        const ctxProducts = document.getElementById('topProductsChart').getContext('2d');
+        const topProductsChart = new Chart(ctxProducts, {
+            type: 'bar',
+            plugins: [ChartDataLabels],
+            data: {
+                labels: ['Wireless Headphones', 'Smartwatches', 'Bluetooth Speakers', 'Laptops', 'Gaming Consoles', 'Tablets', 'Home Assistants'],
+                datasets: [{
+                    label: 'Units Sold',
+                    data: [85000, 75000, 60000, 30000, 40000, 25000, 35000],
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1,
+                    datalabels: {
+                        color: '#444',
+                        formatter: function(value) { return value.toLocaleString(); }
+                    }
+                }, {
+                    label: 'Revenue ($)',
+                    data: [1700000, 1875000, 1200000, 2700000, 2400000, 1500000, 875000],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    datalabels: {
+                        color: '#444',
+                        formatter: function(value) { return '$' + value.toLocaleString(); }
+                    }
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Category-wise Sales Distribution
+        const ctxCategory = document.getElementById('categoryDistributionChart').getContext('2d');
+        const categoryDistributionChart = new Chart(ctxCategory, {
+            type: 'pie',
+            plugins: [ChartDataLabels],
+            data: {
+                labels: ['Electronics & Gadgets', 'Wearables & Audio', 'Smart Home Devices'],
+                datasets: [{
+                    data: [6600000, 4800000, 1050000],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1,
+                    datalabels: {
+                        color: '#444',
+                        formatter: function(value, context) {
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = (value / total * 100).toFixed(1) + '%';
+                            return percentage;
+                        }
+                    }
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
