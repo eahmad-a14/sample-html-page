@@ -17,9 +17,6 @@
             font-size: 2em;
             margin-bottom: 0.5em;
         }
-        h2 {
-            margin-top: 1.5em;
-        }
         .section {
             background: white;
             padding: 20px;
@@ -68,6 +65,22 @@
             max-width: 600px;
             margin: 0 auto;
         }
+        /* Page break control styles */
+        .page-break-after {
+            page-break-after: always;
+        }
+        .no-page-break {
+            page-break-inside: avoid !important;
+        }
+        h2 {
+            page-break-after: avoid;
+        }
+        table {
+            page-break-inside: avoid;
+        }
+        .chart-container, .image-container {
+            page-break-inside: avoid;
+        }
     </style>
 </head>
 <body>
@@ -75,11 +88,11 @@
         <h1>Sales Performance Report</h1>
         <h2>Period: January 2023 - December 2023</h2>
     </div>
-    <div class="section">
+    <div class="section page-break-after">
         <h2>Executive Summary</h2>
         <p>This report provides a detailed analysis of sales performance across various product categories for the year 2023. It highlights key trends, revenue distribution, seasonal variations, and product-specific insights. The analysis aims to offer a strategic roadmap for optimizing sales in the coming year.</p>
     </div>
-    <div class="section metrics">
+    <div class="section metrics no-page-break">
         <h2>Key Sales Metrics</h2>
         <div class="metrics-box">
             <h3>Total Revenue</h3>
@@ -107,7 +120,7 @@
         </div>
     </div>
 
-    <div class="section">
+    <div class="section page-break-after">
         <h2>Monthly Sales Trends</h2>
         <table>
             <thead>
@@ -132,12 +145,12 @@
                 <tr><td>December</td><td>1,230,000</td><td>61,500</td></tr>
             </tbody>
         </table>
-        <div class="chart-container">
+        <div class="chart-container no-page-break">
             <canvas id="monthlyTrendsChart" class="chart"></canvas>
         </div>
     </div>
 
-    <div class="section">
+    <div class="section page-break-after">
         <h2>Top Selling Products</h2>
         <table>
             <thead>
@@ -157,12 +170,12 @@
                 <tr><td>Home Assistants</td><td>35,000</td><td>875,000</td></tr>
             </tbody>
         </table>
-        <div class="chart-container">
+        <div class="chart-container no-page-break">
             <canvas id="topProductsChart" class="chart"></canvas>
         </div>
     </div>
 
-    <div class="section">
+    <div class="section category-distribution no-page-break">
         <h2>Category-wise Sales Distribution</h2>
         <div class="insights-box">
             <h3>Electronics & Gadgets</h3>
@@ -179,12 +192,12 @@
             <p>Home assistants and IoT devices accounted for <strong>$1.05 million</strong>, representing a <strong>8.4% share</strong>.</p>
             <p>Increased adoption of voice-controlled devices led to a <strong>15% increase</strong> compared to 2022.</p>
         </div>
-        <div class="chart-container">
+        <div class="chart-container no-page-break">
             <canvas id="categoryDistributionChart" class="chart"></canvas>
         </div>
     </div>
 
-    <div class="section">
+    <div class="section page-break-after">
         <h2>Quarterly Performance Breakdown</h2>
         <table>
             <thead>
@@ -284,6 +297,7 @@
                 }]
             },
             options: {
+                animation: false,
                 scales: {
                     y: {
                         type: 'linear',
@@ -323,6 +337,7 @@
                 }]
             },
             options: {
+                animation: false,
                 scales: {
                     y: {
                         beginAtZero: true
@@ -360,6 +375,9 @@
                         }
                     }
                 }]
+            },
+            options: {
+                animation: false
             }
         });
     </script>
